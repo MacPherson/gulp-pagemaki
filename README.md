@@ -11,10 +11,10 @@ var maki = require("gulp-pagemaki");
 var path = require("path");
 
 gulp.task('statics', function () {
-	
+
 	return gulp.src("./src/pages/**/*.html")
 		.pipe(maki({
-			templateDir: path.join(__dirname, "src", "layouts")
+			templatesDir: path.join(__dirname, "src", "layouts")
 		}))
 		.pipe(gulp.dest("./public"));
 
@@ -39,13 +39,13 @@ src/
 	sass/
 ```
 
-And will take all of the `.html` files in src/pages, run them them through 
-the pagemaki parser to find Yaml metadata similar to Jekyll, then use that 
+And will take all of the `.html` files in src/pages, run them them through
+the pagemaki parser to find Yaml metadata similar to Jekyll, then use that
 to find which layout to load from your layout directory that you passed in
-the gulpfile above. 
+the gulpfile above.
 
-Once it finds the layout, it drops the content part of each file into the 
-`<%= content %>` tag in the layout and makes the rest of the variables available 
+Once it finds the layout, it drops the content part of each file into the
+`<%= content %>` tag in the layout and makes the rest of the variables available
 to that layout as js vars.
 
 When the parsing and compiling is done, it writes each file, in its preserved
@@ -77,7 +77,7 @@ title: My Homepage
 </html>
 ```
 
-After `gulp statics` runs...  
+After `gulp statics` runs...
 
 `public/index.html`
 
